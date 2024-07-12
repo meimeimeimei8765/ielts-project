@@ -32,3 +32,4 @@ document.getElementById('submit').addEventListener('click', function() {
     document.getElementById('score').innerText = score;
     document.getElementById('related-question').innerText = relatedQuestion;
 });
+
