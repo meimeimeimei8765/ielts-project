@@ -12,11 +12,17 @@
         <div class="input-group">
             <label for="question">输入你的问题:</label>
             <input type="text" id="question" placeholder="请输入你的问题...">
+            <label for="user-answer">你的回答:</label>
+            <input type="text" id="user-answer" placeholder="请输入你的回答...">
             <button id="submit">提交</button>
         </div>
         <div class="output-group">
-            <h2>回答:</h2>
-            <p id="answer"></p>
+            <h2>参考答案:</h2>
+            <p id="reference-answer"></p>
+        </div>
+        <div class="user-answer-group">
+            <h2>你的回答:</h2>
+            <p id="user-answer-display"></p>
         </div>
         <div class="score-group">
             <h2>评分:</h2>
@@ -30,3 +36,4 @@
     <script src="script.js"></script>
 </body>
 </html>
+
