@@ -40,6 +40,14 @@ body {
     margin-bottom: 10px;
 }
 
+.user-answer-group {
+    margin-top: 20px;
+}
+
+.user-answer-group h2 {
+    margin-bottom: 10px;
+}
+
 .score-group {
     margin-top: 20px;
 }
