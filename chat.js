@@ -23,7 +23,7 @@ function handleUserInput() {
 
     const response = getResponse(userInput);
     if (response) {
-        displayMessage(response, 'bot');
+        displayBotMessage(response, 'bot');
     }
 }
 
@@ -135,6 +135,38 @@ By the way, the restaurant was also very noisy because it's a popular spot on a 
 
     return responses[userInput.toLowerCase()] || 'I am sorry, I do not understand that.';
 }
+
+function displayBotMessage(message) {
+            const chatInterface = document.getElementById('chat-interface');
+            const messageContainer = document.createElement('div');
+            messageContainer.classList.add('message', 'bot');
+
+            const icon = document.createElement('img');
+            icon.classList.add('icon');
+            icon.src = 'bot-icon.png';
+            icon.alt = 'Bot Icon';
+
+            const bubble = document.createElement('div');
+            bubble.classList.add('bubble', 'fade-in');
+
+            messageContainer.appendChild(icon);
+            messageContainer.appendChild(bubble);
+            chatInterface.appendChild(messageContainer);
+            chatInterface.scrollTop = chatInterface.scrollHeight;
+
+            let index = 0;
+
+            function typeCharacter() {
+                if (index < message.length) {
+                    bubble.innerHTML += message.charAt(index);
+                    index++;
+                    chatInterface.scrollTop = chatInterface.scrollHeight;
+                    setTimeout(typeCharacter, 50); // 调整延迟以控制速度
+                }
+            }
+
+            typeCharacter();
+        }
 
 function startVoiceRecognition() {
     const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
