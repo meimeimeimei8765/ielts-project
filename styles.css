@@ -42,7 +42,7 @@ main.chat-interface {
 
 .message.user {
     justify-content: flex-end;
-    text-align: right;
+    text-align: left;
 }
 
 .message.user .bubble {
