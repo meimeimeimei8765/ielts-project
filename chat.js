@@ -39,7 +39,7 @@ function displayMessage(message, sender) {
 
     const bubble = document.createElement('div');
     bubble.classList.add('bubble', 'fade-in');
-    bubble.innerHTML = message;
+    bubble.textContent = message;
 
     if (sender === 'user') {
         messageContainer.appendChild(bubble);
@@ -58,7 +58,7 @@ function getResponse(userInput) {
         'hello': 'Hi there! How can I assist you today?',
         'how are you?': 'I am just a bot, but I am here to help you!',
         'what is ielts?': 'IELTS is the International English Language Testing System.',
-        "Yes, I'm ready. What topic would you like me to talk about?": `Great! Please Describe a place you visited where the air was polluted .You should say:
+        "Yes, I'm ready. What topic would you like me to talk about?": `Great! Please Describe a place you visited where the air was polluted. You should say:
 Where the place is
 When you visited there
 Why the air was not good
@@ -68,7 +68,6 @@ Alright, you may start your speech now.`,
         "I wanna talk about my hometown, Anyang in Henan. It's a place with bad air. It's one of the dirtiest cities in China. I grew up there, but now I go back just to see family.When I was little and at school, the air was really bad.The sky was gray and everything looked dusty.I used to cough a lot and my eyes would water.My nose hurt too.A lot of people there had lung problems.Anyang has lots of big factories outside the city.I think they made the air dirty.There were steel factories, coal places, and paper mills.They put bad stuff in the air from their big chimneys.But when I was a kid, the rules for the environment weren't good, so the factories could do what they wanted.I love Anyang, but the air was too bad for me, so I moved.I don't think it's right to make cities better by hurting the air.That's not good for the future.":`This essay effectively conveys the speaker's personal experience with air pollution in their hometown. The language is accessible, and the concerns raised about urban development and environmental impact are thoughtful. 
 Here's a revised version of the essay with some additional details and finer language:
 I'd like to talk about my hometown Anyang City in Henan Province. It is a city with heavy air pollution and is ranked among the most polluted cities in China. I grew up there, and now I go back there to visit my relatives every year.
-53
 When I was in elementary school, the air pollution in Anyang was particularly severe. The sky was always grey and the buildings appeared to be covered in some sort of dust. I remember I always coughed as a kid, and sometimes the air was so bad that I felt my eyes watering and my nose felt uncomfortable. According to statistics, people in Anyang also had a high incidence of lung disease.
 Anyang had developed heavy industry, and there were many different large factories in the suburbs. I believe those factories were responsible for polluting the air, including steel factories, coal plants, and paper mills, which all belonged to high-polluting industries. Their chimneys emitted a lot of harmful gas into the air. Because the environmental law was not that advanced in my childhood, there was limited regulation of those factories, which made the situation worse.
 Although Anyang is my hometown, I couldn't bear the awful air there and chose to move to another city. I don't think urban development should come at the cost of the environment. It won't be sustainable.
@@ -88,7 +87,7 @@ It was a hot summer and as soon as I came into the studio, I felt a wave of heat
 Despite my excitement, I thought the concert was a noisy place because I couldn't appreciate the live rock music. The noise was very off-putting and I couldn't concentrate.
 By the time I left I had a splitting headache! I don't think I'll go to rock concerts anymore.
 I hope my answer is helpful. Okay, so shall we continue practicing now.`,
-        "OK. Let's continue":`Next, please describe a new law you would like to introduce . You should say
+        "OK. Let's continue":`Next, please describe a new law you would like to introduce. You should say
 What law it is
 What changes this law has
 Whether this new law will be popular
@@ -101,11 +100,11 @@ Here's a revised version of the essay with some additional details and finer lan
 The law I propose is the "Comprehensive Garbage Classification and Management Act" which aims to improve waste management practices and reduce environmental pollution. This law would mandate the implementation of a comprehensive garbage classification system, requiring citizens to separate their waste into different categories such as recyclables, organic waste, and hazardous materials.
 Additionally, the law would introduce penalties for violations of garbage classification regulations, including fines for individuals and businesses who fail to comply with the requirements. While this new law may face initial resistance from some members of the public who are accustomed to traditional waste disposal methods, I believe it will ultimately be popular among environmentally conscious citizens and policymakers who recognize the importance of sustainable waste management practices. I came up with the idea for this law after witnessing the negative impact of uncontrolled waste disposal on the environment, including pollution of waterways, soil degradation, and harm to wildlife. Personally, I feel strongly about this new law as it addresses a pressing environmental issue and promotes responsible citizenship. By implementing garbage classification and penalties for violations, we can encourage individuals and businesses to adopt more sustainable behaviors and reduce their ecological footprint. I believe that this law will not only help protect the environment for future generations but also foster a greater sense of environmental stewardship and community responsibility.
 I hope my answer is helpful. Okay, so shall we continue practicing now.`,
-        "Sure. Let's continue.":`Okay, then describe an unusual meal you had . You should say:
+        "Sure. Let's continue.":`Okay, then describe an unusual meal you had. You should say:
 When you had it Where you had it
 Whom you had it with And explain why it was unusual
 You have one minute to prepare your thoughts, and then you'll have two minutes to speak continuously. Ready? Begin when you're set
-"Alright, you may start your speech now.`,
+Alright, you may start your speech now.`,
         "On my first night at work, I had an unusual dinner experience. My boss, wanting to get to know me better, invited me out for a meal. Since it was late, we ended up at her hotel. She's not from our city, just flies in for work a couple of days a week. I was a bit nervous, having never dined alone with a boss before. Plus, she's French, and her accent made me worry about understanding her. But to my surprise, she was relaxed and chatty, sharing details about her family, even showing me pictures of her two children. We indulged in delicious food, sipped on wine, and she even ventured into my personal life, discussing relationships and marriage. It was an odd yet enjoyable evening that brought us closer together.":`Your response was well-structured, with good use of vocabulary and smooth transitions. The story was engaging and effectively conveyed the unexpected bond forged over dinner. 
 Here's a revised version of the essay with some additional details and finer language:
 The most unusual meal for me was my first night at work when my boss took me out to dinner just to get to know me.
@@ -129,7 +128,7 @@ By the way, the restaurant was also very noisy because it's a popular spot on a 
     for (let key in responses) {
         const regex = new RegExp('^' + key.replace(/[-[\]{}()*+?.,\\^$|]/g, '\\$&') + '$', 'i');
         if (regex.test(normalizedInput)) {
-            return responses[key].replace(/\n/g, '<br>'); // Replace newlines with <br> tags
+            return responses[key].replace(/<br>/g, '\n'); // Replace <br> tags with newline characters
         }
     }
 
@@ -137,36 +136,36 @@ By the way, the restaurant was also very noisy because it's a popular spot on a 
 }
 
 function displayBotMessage(message) {
-            const chatInterface = document.getElementById('chat-interface');
-            const messageContainer = document.createElement('div');
-            messageContainer.classList.add('message', 'bot');
+    const chatInterface = document.getElementById('chat-interface');
+    const messageContainer = document.createElement('div');
+    messageContainer.classList.add('message', 'bot');
 
-            const icon = document.createElement('img');
-            icon.classList.add('icon');
-            icon.src = 'bot-icon.png';
-            icon.alt = 'Bot Icon';
+    const icon = document.createElement('img');
+    icon.classList.add('icon');
+    icon.src = 'bot-icon.png';
+    icon.alt = 'Bot Icon';
 
-            const bubble = document.createElement('div');
-            bubble.classList.add('bubble', 'fade-in');
+    const bubble = document.createElement('div');
+    bubble.classList.add('bubble', 'fade-in');
 
-            messageContainer.appendChild(icon);
-            messageContainer.appendChild(bubble);
-            chatInterface.appendChild(messageContainer);
+    messageContainer.appendChild(icon);
+    messageContainer.appendChild(bubble);
+    chatInterface.appendChild(messageContainer);
+    chatInterface.scrollTop = chatInterface.scrollHeight;
+
+    let index = 0;
+
+    function typeCharacter() {
+        if (index < message.length) {
+            bubble.textContent += message.charAt(index);
+            index++;
             chatInterface.scrollTop = chatInterface.scrollHeight;
-
-            let index = 0;
-
-            function typeCharacter() {
-                if (index < message.length) {
-                    bubble.innerHTML += message.charAt(index);
-                    index++;
-                    chatInterface.scrollTop = chatInterface.scrollHeight;
-                    setTimeout(typeCharacter, 50); // 调整延迟以控制速度
-                }
-            }
-
-            typeCharacter();
+            setTimeout(typeCharacter, 50);
         }
+    }
+
+    typeCharacter();
+}
 
 function startVoiceRecognition() {
     const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
