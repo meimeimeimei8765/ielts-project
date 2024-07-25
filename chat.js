@@ -129,7 +129,7 @@ By the way, the restaurant was also very noisy because it's a popular spot on a 
     for (let key in responses) {
         const regex = new RegExp('^' + key.replace(/[-[\]{}()*+?.,\\^$|]/g, '\\$&') + '$', 'i');
         if (regex.test(normalizedInput)) {
-            return responses[key];
+            return responses[key].replace(/\n/g, '<br>');
         }
     }
 
