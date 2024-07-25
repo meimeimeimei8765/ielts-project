@@ -108,7 +108,7 @@ function displayBotMessage(message) {
                 bubble.innerHTML += '<br>';
                 index += 4;
             } else {
-                bubble.textContent += message.charAt(index);
+                bubble.innerHTML += message.charAt(index);
                 index++;
             }
             chatInterface.scrollTop = chatInterface.scrollHeight;
